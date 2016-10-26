@@ -6,7 +6,11 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Captcha;
 
 class AuthController extends Controller
 {
@@ -21,18 +25,17 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $username = 'name';
+    protected $redirectAfterLogout = '/login';
+    protected $redirectTo = '/admin/weblive';
+    protected $username='name';
 
-    // protected $redirectPath = '/admin';
-
-    // protected $redirectAfterLogout = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -73,4 +76,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+
 }

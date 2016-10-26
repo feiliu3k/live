@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -10,6 +12,7 @@ return [
     | such as the size rules. Feel free to tweak each of these messages.
     |
     */
+
     'accepted'             => ':attribute 必须接受。',
     'active_url'           => ':attribute 不是一个有效的网址。',
     'after'                => ':attribute 必须是一个在 :date 之后的日期。',
@@ -31,9 +34,11 @@ return [
     'different'            => ':attribute 和 :other 必须不同。',
     'digits'               => ':attribute 必须是 :digits 位的数字。',
     'digits_between'       => ':attribute 必须是介于 :min 和 :max 位的数字。',
+    'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => ':attribute 已經存在。',
     'email'                => ':attribute 不是一个合法的邮箱。',
     'exists'               => ':attribute 不存在。',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute 不能为空。',
     'image'                => ':attribute 必须是图片。',
     'in'                   => '已选的属性 :attribute 非法。',
@@ -76,6 +81,8 @@ return [
     'timezone'             => ':attribute 必须是一个合法的时区值。',
     'unique'               => ':attribute 已经存在。',
     'url'                  => ':attribute 格式不正确。',
+    'captcha'              => ':attribute 填写不正确。',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -86,11 +93,13 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
     'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -101,6 +110,7 @@ return [
     | of 'email'. This simply helps us make messages a little cleaner.
     |
     */
+
     'attributes'           => [
         'name'                  => '名称',
         'username'              => '用户名',
@@ -114,7 +124,7 @@ return [
         'address'               => '地址',
         'phone'                 => '电话',
         'mobile'                => '手机',
-        'age'                   => '年轻',
+        'age'                   => '年龄',
         'sex'                   => '性别',
         'gender'                => '性别',
         'day'                   => '天',
@@ -131,5 +141,7 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+        'captcha'               => '验证码'
     ],
+
 ];

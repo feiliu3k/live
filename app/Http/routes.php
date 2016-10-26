@@ -10,14 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// Route::get('/', ['uses'=>'Admin\LiveController@index','middleware' => 'auth']);
 
-// Route::group(['namespace' => 'Admin', 'middleware' => 'auth', 'prefix'=>'admin'], function () {
-//     Route::resource('weblive','LiveController');
+Route::get('/', function () {
+    return redirect('admin/weblive');
+});
 
-// });
+Route::group(['namespace'=>'Admin','middleware'=>'auth'],function(){
+    Route::resource('admin/weblive', 'LiveController', ['except' => 'show']);
+    Route::resource('admin/liveinfo', 'LiveInfoController', ['except' => 'show']);
+    Route::resource('admin/viewrecord', 'ViewRecordController', ['except' => 'show']);
+});
 
-Route::get('/auth/login', 'Auth\AuthController@showLoginForm');
-Route::post('/auth/login', 'Auth\AuthController@login');
-Route::get('/auth/logout', 'Auth\AuthController@logout');
-
+Route::get('login','Auth\AuthController@showLoginForm');
+Route::post('login','Auth\AuthController@login');
+Route::get('logout','Auth\AuthController@logout');
+Route::get('resetpassword','HomeController@resetPassword');
+Route::post('changepassword','HomeController@changePassword');

@@ -1,9 +1,10 @@
-﻿<?php
-return [
-        'logo' => '橄榄台',
-        'title' => '微直播',
-        'posts_per_page' => 20,
+<?php
 
-        'image_path'=>'../../uploads/chaoshan/',
-        'video_path'=>'../../uploads/chaoshan/',
+return [
+    'title' => '橄榄台微直播',
+    'posts_per_page' => 20,
+    'uploads' => [
+        'storage' => 'local',
+        'webpath' => '/uploads',
+    ],
 ];
