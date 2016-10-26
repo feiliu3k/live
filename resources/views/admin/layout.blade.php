@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('rating.title') }}管理</title>
+        <title>{{ config('weblive.title') }}管理</title>
 
         <link href="{{ url('/assets/css/admin.css') }}" rel="stylesheet">
         @yield('styles')
@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ config('rating.title') }}管理</a>
+                    <a class="navbar-brand" href="#">{{ config('weblive.title') }}管理</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     @include('admin.partials.navbar')

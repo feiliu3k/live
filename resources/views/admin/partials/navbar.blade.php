@@ -1,24 +1,8 @@
 <ul class="nav navbar-nav">
     <li><a href="/">首页</a></li>
     @if (Auth::check())
-        <li @if (Request::is('admin/fre*')) class="active" @endif>
-            <a href="{{ url('/admin/fre') }}">频道</a>
-        </li>
-        <li @if (Request::is('admin/ratingtype*')) class="active" @endif>
-            <a href="{{ url('/admin/ratingtype') }}">收视率类型</a>
-        </li>
-        <li @if (Request::is('admin/ratinglist*')) class="active" @endif>
-            <a href="{{ url('/admin/ratinglist') }}">收视率</a>
-        </li>
-        <li @if (Request::is('admin/adplaylist*')) class="active" @endif>
-            <a href="{{ url('/admin/adplaylist') }}">广告播出列表</a>
-        </li>
-        <li @if (Request::is('admin/statlist*')) class="active" @endif>
-            <a href="{{ url('/admin/statlist') }}">广告收视率统计列表</a>
-        </li>
-
-        <li @if (Request::is('admin/upload*')) class="active" @endif>
-            <a href="{{ url('/admin/upload') }}">上传</a>
+        <li @if (Request::is('admin/weblive*')) class="active" @endif>
+            <a href="{{ url('/admin/fre') }}">微直播</a>
         </li>
     @endif
 </ul>
