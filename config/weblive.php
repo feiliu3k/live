@@ -7,4 +7,5 @@ return [
         'storage' => 'local',
         'webpath' => '/uploads',
     ],
+    'thumb_path'=>'../../uploads/weblive/',
 ];

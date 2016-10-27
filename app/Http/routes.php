@@ -14,8 +14,10 @@
 Route::get('/', function () {
     return redirect('admin/weblive');
 });
+Route::post('upload/uploadImgFile', 'HomeController@uploadImgFile');
 
 Route::group(['namespace'=>'Admin','middleware'=>'auth'],function(){
+
     Route::resource('admin/weblive', 'LiveController', ['except' => 'show']);
     Route::resource('admin/liveinfo', 'LiveInfoController', ['except' => 'show']);
     Route::resource('admin/viewrecord', 'ViewRecordController', ['except' => 'show']);

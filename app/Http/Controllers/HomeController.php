@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use Auth;
+use Redirect, Input, Response, Image, Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -68,6 +69,39 @@ class HomeController extends Controller
                         ->withErrors("新密码不一致！");
         }
 
+    }
+
+     public function uploadImgFile(Request $request)
+    {
+        //Ajax上传图片
+        // $file = Input::file('file');
+        // $filetype = Input::get('filetype');
+        $file = $request->file('file');
+        $filetype=$request->filetype;
+        $ext=strtolower($file->getClientOriginalExtension());
+
+        $allowed_extensions = array("jpg", "bmp", "gif", "tif","png","jpeg");
+        if ($ext && !in_array($ext, $allowed_extensions)) {
+            return Response::json([ 'errors' => '只能上传png、jpg、gif、等等文件.']);
+        }
+        if ($filetype=='image'){
+            $destinationPath = config('weblive.thumb_path');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = str_random(16).'.'.$extension;
+            $file->move($destinationPath, $fileName);
+            $img = Image::make(public_path($destinationPath.$fileName))
+                        ->resize(320, null, function ($constraint) {
+                                            $constraint->aspectRatio();
+                                        });
+            $img->save(public_path($destinationPath.$fileName));
+        }
+        return Response::json(
+            [
+                'success' => true,
+                'src' =>$fileName,
+                'filetype' => $filetype
+            ]
+        );
     }
 
 

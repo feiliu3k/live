@@ -17,21 +17,15 @@
 </div>
 
 <div class="form-group">
-    <label for="livetitle" class="col-md-3 control-label">
+    <label for="liveimg" class="col-md-3 control-label">
         封面
     </label>
-    <div class="col-md-8">
-        <input type="text" class="form-control" name="livetitle" id="livetitle" value="{{ $livetitle }}">
+    <div class="col-md-6">
+        <input type="text" class="form-control" name="liveimg"  id="liveimg" value="{{ $liveimg }}" >
     </div>
-</div>
-
-<div class="form-group">
-    <label for="livetitle" class="col-md-3 control-label">
-        内容简介
-    </label>
-    <div class="col-md-8">
-        <input type="text" class="form-control" name="livetitle" id="livetitle" value="{{ $livetitle }}">
-    </div>
+    <div class="col-md-2 thumb-wrap">
+        <div class="img-upload btn btn-block btn-info btn-flat" title="点击上传">点击上传</div>
+   </div>
 </div>
 
 <div class="form-group">
@@ -49,5 +43,14 @@
     </label>
     <div class="col-md-8">
         <input type="text" class="form-control" name="readnum" id="readnum" value="{{ $readnum }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="livecontent" class="col-md-3 control-label">
+        内容简介
+    </label>
+    <div class="col-md-8">
+         <script id="livecontent" name="livecontent" type="text/plain" style="width:100%;height:300px;">{!! $livecontent !!}</script>
     </div>
 </div>
