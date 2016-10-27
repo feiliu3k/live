@@ -7,12 +7,12 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label for="livetitle" class="col-md-3 control-label">
+<div class="form-group ">
+    <label for="livetime" class="col-md-3 control-label">
         时间
     </label>
-    <div class="col-md-8">
-        <input type="text" class="form-control" name="livetitle" id="livetitle" value="{{ $livetitle }}">
+    <div class="col-md-8 ">
+        <input type="text" class="form-control datetimepicker" name="livetime" id="livetime"  value="{{ $livetime }}">
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('styles')
-    <link href="{{ URL::asset('css/upload.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
 @stop
 
 @section('content')
@@ -71,6 +71,7 @@
 @section('scripts')
 
 <script src="{{ URL::asset('assets/js/jquery.form.js') }}"></script>
+
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
@@ -87,6 +88,7 @@
     editor.render("livecontent");}
 
     $(function() {
+        //datetimepacker;
 
         //上传图片相关
 
