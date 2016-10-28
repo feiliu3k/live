@@ -8,7 +8,8 @@ class WebLive extends Model
 {
     protected $table = 'weblive';
     protected $primaryKey='liveid';
-    protected $dates = ['livetime'];
+     public $timestamps = false;
+   // protected $dates = ['livetime'];
 
     protected $fillable = [
         'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum'

@@ -7,12 +7,14 @@
     </div>
 </div>
 
-<div class="form-group ">
+<div class="form-group">
     <label for="livetime" class="col-md-3 control-label">
         时间
     </label>
-    <div class="col-md-8 ">
-        <input type="text" class="form-control datetimepicker" name="livetime" id="livetime"  value="{{ $livetime }}">
+    <div class="col-md-8 input-append date form_datetime">
+        <input type="text" class="form-control datetimepicker" readonly name="livetime" id="livetime"  value="{{ $livetime }}">
+        <span class="add-on"><i class="icon-remove"></i></span>
+        <span class="add-on"><i class="icon-calendar"></i></span>
     </div>
 </div>
 

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 use App\Models\WebLive;
+
 class LiveController extends Controller
 {
 
@@ -53,7 +55,15 @@ class LiveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $weblive = new WebLive();
+        foreach (array_keys($this->fields) as $field) {
+            $weblive->$field = $request->get($field);
+        }
+
+        $weblive->save();
+
+        return redirect('/admin/weblive')
+                        ->withSuccess("微直播活动 '$weblive->livetim' 新建成功.");
     }
 
     /**
@@ -75,7 +85,8 @@ class LiveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = WebLive::findOrFail($id)->toArray();
+        return view('admin.weblive.edit', $data);
     }
 
     /**
@@ -87,7 +98,16 @@ class LiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $weblive = WebLive::findOrFail($id);
+
+        foreach (array_keys($this->fields) as $field) {
+            $weblive->$field = $request->get($field);
+        }
+
+        $weblive->save();
+
+        return redirect("/admin/weblive/$id/edit")
+                        ->withSuccess("更新成功.");
     }
 
     /**
@@ -98,6 +118,10 @@ class LiveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $weblive = WebLive::findOrFail($id);
+        $weblive->delete();
+
+        return redirect('/admin/weblive')
+                        ->withSuccess("'$weblive->livetitle' .已经被删除.");
     }
 }

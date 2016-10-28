@@ -2,6 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
+    <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
 @stop
 
 @section('content')
@@ -29,7 +30,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-7 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary ">
+                                    <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-plus-circle"></i>
                                         添加
                                     </button>
@@ -71,7 +72,8 @@
 @section('scripts')
 
 <script src="{{ URL::asset('assets/js/jquery.form.js') }}"></script>
-
+<script charset="UTF-8" src="{{ URL::asset('assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script charset="UTF-8" src="{{ URL::asset('assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
@@ -89,6 +91,12 @@
 
     $(function() {
         //datetimepacker;
+        $(".form_datetime").datetimepicker({
+            format: "yyyy-mm-dd hh:ii",
+            language: "zh-CN",
+            autoclose: true,
+            todayBtn: true
+        });
 
         //上传图片相关
 

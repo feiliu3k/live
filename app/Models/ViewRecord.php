@@ -9,7 +9,7 @@ class ViewRecord extends Model
     protected $table = 'viewrecord';
     protected $primaryKey='id';
     protected $dates = ['viewtime'];
-
+    public $timestamps = false;
 
     protected $fillable = [
         'liveid', 'localrecord', 'userip', 'userphone', 'viewtime'
