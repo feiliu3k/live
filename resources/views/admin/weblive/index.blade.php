@@ -41,6 +41,9 @@
                                 <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> 编辑
                                 </a>
+                                <a href="{{ url('/admin/liveinfo').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-info">
+                                    <i class="fa fa-edit"></i> 详细
+                                </a>
                             </td>
                         </tr>
                     @endforeach
