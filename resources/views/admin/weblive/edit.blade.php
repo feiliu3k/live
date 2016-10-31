@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
 @stop
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row page-title-row">
         <div class="col-md-12">
             <h3>微直播活动 <small>» 编辑</small></h3>

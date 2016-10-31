@@ -15,4 +15,13 @@ class WebLive extends Model
         'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum'
     ];
 
+    public function webInfos()
+    {
+        return $this->hasMany('App\Models\WebInfo','liveid','liveid');
+    }
+
+    public function viewRecords()
+    {
+        return $this->hasMany('App\Models\ViewRecord','liveid','liveid');
+    }
 }

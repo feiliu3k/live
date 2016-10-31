@@ -18,7 +18,7 @@
     <body>
 
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
                         <span class="sr-only">Toggle Navigation</span>

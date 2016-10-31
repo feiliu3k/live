@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row page-title-row">
             <div class="col-md-6">
                 <h3>微直播 <small>» 列表</small></h3>
@@ -41,7 +41,7 @@
                                 <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> 编辑
                                 </a>
-                                <a href="{{ url('/admin/liveinfo').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-info">
+                                <a href="{{ url('/admin/weblive').'/'.$live->liveid }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> 详细
                                 </a>
                             </td>

@@ -16,4 +16,9 @@ class WebInfo extends Model
     ];
 
     protected $casts = ['delflag'];
+
+    public function webLive()
+    {
+        return $this->belongsTo('App\Models\WebLive','liveid','liveid');
+    }
 }

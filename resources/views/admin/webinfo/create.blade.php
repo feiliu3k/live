@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row page-title-row">
         <div class="col-md-12">
             <h3>微直播活动 <small>» 新建</small></h3>
@@ -36,7 +36,9 @@
                                     </button>
                                 </div>
                             </div>
+
                         </form>
+
                 </div>
              </div>
         </div>

@@ -15,4 +15,8 @@ class ViewRecord extends Model
         'liveid', 'localrecord', 'userip', 'userphone', 'viewtime'
     ];
 
+    public function webLive()
+    {
+        return $this->belongsTo('App\Models\WebLive','liveid','liveid');
+    }
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
 use App\Models\WebLive;
+use App\Models\WebInfo;
+use App\Models\ViewRecord;
 
 class LiveController extends Controller
 {
@@ -74,7 +76,7 @@ class LiveController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

@@ -1,15 +1,13 @@
 @extends('admin.layout')
-
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
 @stop
-
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row page-title-row">
         <div class="col-md-12">
-            <h3>微直播活动 <small>» 新建</small></h3>
+            <h3>微直播活动 <small>» 编辑</small></h3>
         </div>
     </div>
 
@@ -17,56 +15,76 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">新建窗口</h3>
+                    <h3 class="panel-title">编辑窗口</h3>
                 </div>
                 <div class="panel-body">
 
                     @include('admin.partials.errors')
+                    @include('admin.partials.success')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'. $liveid }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="liveid" value="{{ $liveid }}">
 
-                            @include('admin.weblive._form')
 
-                            <div class="form-group">
-                                <div class="col-md-7 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-plus-circle"></i>
-                                        添加
-                                    </button>
-                                </div>
+
+                        @include('admin.weblive._form')
+
+                        <div class="form-group">
+                            <div class="col-md-7 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary btn-md">
+                                    <i class="fa fa-save"></i>
+                                    保存修改
+                                </button>
+                                <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#modal-delete">
+                                    <i class="fa fa-times-circle"></i>
+                                    删除
+                                </button>
+
                             </div>
-                        </form>
-                </div>
-             </div>
-        </div>
-    </div>
+                        </div>
 
-    <div class="upload-mask">
-    </div>
-    <div class="panel panel-info upload-file">
-        <div class="panel-heading">
-            上传文件
-            <span class="close pull-right">关闭</span>
-        </div>
-        <div class="panel-body">
-            <div id="validation-errors"></div>
-            <form method="POST" action="{{ url('upload/uploadImgFile') }}" id="imgForm" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>文件上传</label>
-                    <span class="require">(*)</span>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input id="thumb" name="file" type="file"  required="required">
-                    <input id="filetype"  type="hidden" name="filetype" value="">
+                    </form>
+
                 </div>
-            </form>
+            </div>
         </div>
-        <div class="panel-footer">
+    </div>
+</div>
+
+{{-- 确认删除 --}}
+<div class="modal fade" id="modal-delete" tabIndex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+                <h4 class="modal-title">请确认</h4>
+            </div>
+            <div class="modal-body">
+                <p class="lead">
+                    <i class="fa fa-question-circle fa-lg"></i>
+                    你是否要删除此活动?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <form method="POST" action="{{ url('/admin/weblive').'/'.$liveid }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-times-circle"></i> 确定
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 @stop
+
 @section('scripts')
 
 <script src="{{ URL::asset('assets/js/jquery.form.js') }}"></script>
