@@ -14,6 +14,13 @@ use App\Models\WebInfo;
 
 class LiveInfoController extends Controller
 {
+
+    protected $fields = [
+        'liveid' => '',
+        'ifotitle' => '',
+        'ifocontent' => '',
+        'ifotime' => '',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +40,12 @@ class LiveInfoController extends Controller
      */
     public function create($liveid)
     {
-        return view('admin.weblive.create')->withLiveid($liveid);
+        $data = [];
+        foreach ($this->fields as $field => $default) {
+            $data[$field] = old($field, $default);
+        }
+        $data['liveid']=$liveid;
+        return view('admin.webinfo.create', $data);
     }
 
     /**

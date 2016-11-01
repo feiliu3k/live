@@ -15,7 +15,7 @@ use App\Models\ViewRecord;
 class LiveController extends Controller
 {
 
-     protected $fields = [
+    protected $fields = [
         'livetitle' => '',
         'livetime' => '',
         'liveimg' => '',

@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">新建窗口</h3>
@@ -23,7 +23,7 @@
 
                     @include('admin.partials.errors')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'.$liveid }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'.$liveid.'/liveinfo' }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" class="form-control" name="liveid" id="liveid" value="{{ $liveid }}">
 
@@ -67,7 +67,7 @@
         editor.ready(function() {
         editor.execCommand( 'fontfamily', '微软雅黑' );
     });
-    editor.render("livecontent");}
+    editor.render("ifocontent");}
 
     $(function() {
         //datetimepacker;
@@ -78,66 +78,6 @@
             todayBtn: true
         });
 
-        //上传图片相关
-
-        $('.upload-mask').on('click',function(){
-            $(this).hide();
-            $('.upload-file').hide();
-        });
-
-        $('.upload-file .close').on('click',function(){
-            $('.upload-mask').hide();
-            $('.upload-file').hide();
-        });
-
-
-        $('.img-upload').on('click',function(){
-            $('.upload-mask').show();
-            $('.upload-file').show();
-
-            $('#filetype').attr('value','image');
-        });
-
-
-
-
-        //ajax 上传
-        $(document).ready(function() {
-            var options = {
-                beforeSubmit:  showRequest,
-                success:       showResponse,
-                dataType: 'json'
-            };
-            $('#imgForm input[name=file]').on('change', function(){
-                //$('#upload-avatar').html('正在上传...');
-                $('#imgForm').ajaxForm(options).submit();
-            });
-        });
-
-        function showRequest() {
-            $("#validation-errors").hide().empty();
-            $("#output").css('display','none');
-            return true;
-        }
-
-        function showResponse(response)  {
-            if(!response.success)
-            {
-                var responseErrors = response.errors;
-
-                $("#validation-errors").append('<div class="alert alert-error"><strong>'+ responseErrors +'</strong><div>');
-
-                $("#validation-errors").show();
-            } else {
-
-                $('.upload-mask').hide();
-                $('.upload-file').hide();
-                if (response.filetype=='image'){
-                    $("#liveimg").val(response.src);
-                }
-
-            }
-        }
 
     });
 </script>
