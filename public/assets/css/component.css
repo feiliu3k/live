@@ -14,7 +14,7 @@
 	padding: 0;
 	list-style: none;
 	position: relative;
-} 
+}
 
 /* The line */
 .cbp_tmtimeline:before {
@@ -72,7 +72,7 @@
 	background: #6cbfee;
 }
 
-.cbp_tmtimeline > li .cbp_tmlabel h2 { 
+.cbp_tmtimeline > li .cbp_tmlabel h2 {
 	margin-top: 0px;
 	padding: 0 0 10px 0;
 	border-bottom: 1px solid rgba(255,255,255,0.4);
@@ -184,6 +184,6 @@
 		float: right;
 		left: auto;
 		margin: -55px 5px 0 0px;
-	}	
+	}
 }
 

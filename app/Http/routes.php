@@ -23,6 +23,7 @@ Route::group(['namespace'=>'Admin','middleware'=>'auth'],function(){
     Route::get('admin/liveinfo/index/{liveid}','LiveInfoController@index');
 
     Route::resource('admin/liveinfo', 'LiveInfoController', ['except' => ['show','index']]);
+
     Route::resource('admin/viewrecord', 'ViewRecordController', ['except' => 'show']);
 });
 

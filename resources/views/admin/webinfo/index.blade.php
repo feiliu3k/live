@@ -26,11 +26,11 @@
                             <div class="cbp_tmicon cbp_tmicon-phone"></div>
                             <div class="cbp_tmlabel">
                                 <h2>Ricebean black-eyed pea
-                                     <a href="" class="btn btn-xs btn-success">
-                                        <i class="fa fa-edit" data-toggle="modal" data-target="#modal-info-edit"></i> 编辑
+                                     <a href="" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-info-create">
+                                        <i class="fa fa-edit" ></i> 编辑
                                     </a>
-                                    <a href="" class="btn btn-xs btn-danger">
-                                        <i class="fa fa-trash" data-toggle="modal" data-target="#modal-info-delete"></i> 删除
+                                    <a href="" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-info-create">
+                                        <i class="fa fa-trash" ></i> 删除
                                     </a>
                                 </h2>
                                 <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    @include('admin.webinfo._modals')
 @stop
 
 @section('scripts')
@@ -52,8 +53,4 @@
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
-    <script>
-
-
-    </script>
 @stop
