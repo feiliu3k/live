@@ -63,7 +63,7 @@ class LiveInfoController extends Controller
 
         $webInfo->save();
 
-        return redirect('/admin/weblive'.'/'.$liveid)
+        return redirect('/admin/weblive'.'/'.$liveid.'liveinfo')
                         ->withSuccess("微直播活动 '$webInfo->ifotitle' 新建成功.");
     }
 
@@ -75,7 +75,8 @@ class LiveInfoController extends Controller
      */
     public function edit($liveid,$infoid)
     {
-        //
+        $data = webInfo::findOrFail($infoid)->toArray();
+        return view('admin.webinfo.edit', $data);
     }
 
     /**

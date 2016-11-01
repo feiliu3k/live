@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row page-title-row">
         <div class="col-md-12">
-            <h3>微直播活动 <small>» 编辑</small></h3>
+            <h3>微直播详细信息 <small>» 编辑</small></h3>
         </div>
     </div>
 
@@ -22,14 +22,12 @@
                     @include('admin.partials.errors')
                     @include('admin.partials.success')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'. $liveid }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'. $liveid.'/liveinfo' }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="liveid" value="{{ $liveid }}">
 
-
-
-                        @include('admin.weblive._form')
+                        @include('admin.webinfo._form')
 
                         <div class="form-group">
                             <div class="col-md-7 col-md-offset-3">
@@ -103,7 +101,7 @@
         editor.ready(function() {
         editor.execCommand( 'fontfamily', '微软雅黑' );
     });
-    editor.render("livecontent");}
+    editor.render("ifocontent");}
 
     $(function() {
         //datetimepacker;
@@ -113,67 +111,6 @@
             autoclose: true,
             todayBtn: true
         });
-
-        //上传图片相关
-
-        $('.upload-mask').on('click',function(){
-            $(this).hide();
-            $('.upload-file').hide();
-        });
-
-        $('.upload-file .close').on('click',function(){
-            $('.upload-mask').hide();
-            $('.upload-file').hide();
-        });
-
-
-        $('.img-upload').on('click',function(){
-            $('.upload-mask').show();
-            $('.upload-file').show();
-
-            $('#filetype').attr('value','image');
-        });
-
-
-
-
-        //ajax 上传
-        $(document).ready(function() {
-            var options = {
-                beforeSubmit:  showRequest,
-                success:       showResponse,
-                dataType: 'json'
-            };
-            $('#imgForm input[name=file]').on('change', function(){
-                //$('#upload-avatar').html('正在上传...');
-                $('#imgForm').ajaxForm(options).submit();
-            });
-        });
-
-        function showRequest() {
-            $("#validation-errors").hide().empty();
-            $("#output").css('display','none');
-            return true;
-        }
-
-        function showResponse(response)  {
-            if(!response.success)
-            {
-                var responseErrors = response.errors;
-
-                $("#validation-errors").append('<div class="alert alert-error"><strong>'+ responseErrors +'</strong><div>');
-
-                $("#validation-errors").show();
-            } else {
-
-                $('.upload-mask').hide();
-                $('.upload-file').hide();
-                if (response.filetype=='image'){
-                    $("#liveimg").val(response.src);
-                }
-
-            }
-        }
 
     });
 </script>
