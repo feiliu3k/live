@@ -65,19 +65,9 @@ class LiveController extends Controller
         $weblive->save();
 
         return redirect('/admin/weblive')
-                        ->withSuccess("微直播活动 '$weblive->livetim' 新建成功.");
+                        ->withSuccess("微直播活动 '$weblive->livetitle' 新建成功.");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.

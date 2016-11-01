@@ -56,7 +56,15 @@ class LiveInfoController extends Controller
      */
     public function store(Request $request,$liveid)
     {
-        //
+        $webInfo = new WebInfo();
+        foreach (array_keys($this->fields) as $field) {
+            $webInfo->$field = $request->get($field);
+        }
+
+        $webInfo->save();
+
+        return redirect('/admin/weblive'.'/'.$liveid)
+                        ->withSuccess("微直播活动 '$webInfo->ifotitle' 新建成功.");
     }
 
     /**
