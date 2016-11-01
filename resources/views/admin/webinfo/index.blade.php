@@ -18,11 +18,13 @@
                     @include('admin.partials.success')
                     <div class="main">
                         <ul class="cbp_tmtimeline">
+                            @if $live->webInfos
+                                foreach($liveinfo in $live->webInfos)
                             <li>
                                 <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
                                 <div class="cbp_tmicon cbp_tmicon-phone"></div>
                                 <div class="cbp_tmlabel">
-                                    <h2>Ricebean black-eyed pea
+                                    <h2>{{$liveinfo->ifotitle}}
                                          <a href="" class="btn btn-xs btn-success">
                                             <i class="fa fa-edit" ></i> 编辑
                                         </a>
@@ -30,39 +32,10 @@
                                             <i class="fa fa-trash" ></i> 删除
                                         </a>
                                     </h2>
-                                    <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
+                                    {!! $liveinfo->ifocontent !!}
                                 </div>
                             </li>
-                             <li>
-                                <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>Ricebean black-eyed pea
-                                         <a href="" class="btn btn-xs btn-success" onclick="modify_webinfo(json)">
-                                            <i class="fa fa-edit" ></i> 编辑
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger" onclick="delete_webinfo('aa',11)">
-                                            <i class="fa fa-trash" ></i> 删除
-                                        </a>
-                                    </h2>
-                                    <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
-                                </div>
-                            </li>
-                             <li>
-                                <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>Ricebean black-eyed pea
-                                         <a href="" class="btn btn-xs btn-success" onclick="modify_webinfo(json)">
-                                            <i class="fa fa-edit" ></i> 编辑
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger" onclick="delete_webinfo('aa',11)">
-                                            <i class="fa fa-trash" ></i> 删除
-                                        </a>
-                                    </h2>
-                                    <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Pea sprouts wattle seed rutabaga okra yarrow cress avocado grape radish bush tomato ricebean black-eyed pea maize eggplant. Cabbage lentil cucumber chickpea sorrel gram garbanzo plantain lotus root bok choy squash cress potato summer purslane salsify fennel horseradish dulse. Winter purslane garbanzo artichoke broccoli lentil corn okra silver beet celery quandong. Plantain salad beetroot bunya nuts black-eyed pea collard greens radish water spinach gourd chicory prairie turnip avocado sierra leone bologi.</p>
-                                </div>
-                            </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
