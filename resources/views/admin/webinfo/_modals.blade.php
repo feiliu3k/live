@@ -134,7 +134,7 @@
                 <form method="POST" action="{{ url('/admin/upload/folder') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="ifoid" id="delete-ifoid">
+                    <input type="hidden" name="infoid" id="delete-infoid">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
                         取消
                     </button>

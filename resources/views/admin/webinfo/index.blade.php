@@ -20,16 +20,17 @@
                 @include('admin.partials.errors')
                 @include('admin.partials.success')
                 <div class="main">
+
                     <ul class="cbp_tmtimeline">
                         <li>
                             <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
                             <div class="cbp_tmicon cbp_tmicon-phone"></div>
                             <div class="cbp_tmlabel">
                                 <h2>Ricebean black-eyed pea
-                                     <a href="" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-info-create">
+                                     <a href="" class="btn btn-xs btn-success" onclick="modify_webinfo(json)">
                                         <i class="fa fa-edit" ></i> 编辑
                                     </a>
-                                    <a href="" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-info-create">
+                                    <a href="" class="btn btn-xs btn-danger" onclick="delete_webinfo('aa',11)">
                                         <i class="fa fa-trash" ></i> 删除
                                     </a>
                                 </h2>
@@ -41,16 +42,21 @@
             </div>
         </div>
     </div>
-    @include('admin.webinfo._modals')
+
 @stop
 
 @section('scripts')
     <script src="{{ URL::asset('assets/js/jquery.form.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vue.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/vue-resource.js') }}"></script>
     <script charset="UTF-8" src="{{ URL::asset('assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script charset="UTF-8" src="{{ URL::asset('assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+    <script>
+        function delete_webinfo(infotitle,infoid) {
+            $("#delete-infotitle").html(infotitle);
+            $("#delete-infoid").val(infoid);
+            $("#modal-info-delete").modal("show");
+        }
+    </script>
 @stop
