@@ -6,10 +6,10 @@
 @stop
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row page-title-row">
         <div class="col-md-12">
-            <h3>微直播活动 <small>» 新建</small></h3>
+            <h3>微直播详细信息 <small>» 新建</small></h3>
         </div>
     </div>
 
@@ -23,10 +23,11 @@
 
                     @include('admin.partials.errors')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'.$liveid }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" class="form-control" name="liveid" id="liveid" value="{{ $liveid }}">
 
-                            @include('admin.weblive._form')
+                            @include('admin.webinfo._form')
 
                             <div class="form-group">
                                 <div class="col-md-7 col-md-offset-3">
@@ -44,28 +45,7 @@
         </div>
     </div>
 
-    <div class="upload-mask">
-    </div>
-    <div class="panel panel-info upload-file">
-        <div class="panel-heading">
-            上传文件
-            <span class="close pull-right">关闭</span>
-        </div>
-        <div class="panel-body">
-            <div id="validation-errors"></div>
-            <form method="POST" action="{{ url('upload/uploadImgFile') }}" id="imgForm" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>文件上传</label>
-                    <span class="require">(*)</span>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input id="thumb" name="file" type="file"  required="required">
-                    <input id="filetype"  type="hidden" name="filetype" value="">
-                </div>
-            </form>
-        </div>
-        <div class="panel-footer">
-        </div>
-    </div>
+
 </div>
 
 @stop

@@ -19,10 +19,10 @@ class LiveInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($liveid)
     {
-        $weblive = WebLive::with('webInfos', 'viewRecords')->findOrFail($id)->toArray();
-       // dd($weblive);
+        $weblive = WebLive::with('webInfos', 'viewRecords')->findOrFail($liveid);
+
         return view('admin.webinfo.index')->withLive($weblive);
     }
 
@@ -31,9 +31,9 @@ class LiveInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($liveid)
     {
-        //
+        return view('admin.weblive.create')->withLiveid($liveid);
     }
 
     /**
@@ -42,18 +42,7 @@ class LiveInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function store(Request $request,$liveid)
     {
         //
     }
@@ -64,7 +53,7 @@ class LiveInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($liveid,$infoid)
     {
         //
     }
@@ -76,7 +65,7 @@ class LiveInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $liveid,$infoid)
     {
         //
     }
@@ -87,7 +76,7 @@ class LiveInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($liveid,$infoid)
     {
         //
     }

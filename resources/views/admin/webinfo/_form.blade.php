@@ -1,4 +1,4 @@
-<input type="hidden" class="form-control" name="liveid" id="liveid" value="{{ $liveid }}">
+
 <div class="form-group">
     <label for="ifotitle" class="col-md-3 control-label">
         ifotitle
