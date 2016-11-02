@@ -2,7 +2,7 @@
     <li><a href="/">首页</a></li>
     @if (Auth::check())
         <li @if (Request::is('admin/weblive*')) class="active" @endif>
-            <a href="{{ url('/admin/fre') }}">微直播</a>
+            <a href="{{ url('/admin/weblive') }}">微直播</a>
         </li>
     @endif
 </ul>

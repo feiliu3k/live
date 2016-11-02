@@ -18,23 +18,23 @@
                     @include('admin.partials.success')
                     <div class="main">
                         <ul class="cbp_tmtimeline">
-                            @if $live->webInfos
-                                foreach($liveinfo in $live->webInfos)
-                            <li>
-                                <time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>4/10/13</span> <span>18:30</span></time>
-                                <div class="cbp_tmicon cbp_tmicon-phone"></div>
-                                <div class="cbp_tmlabel">
-                                    <h2>{{$liveinfo->ifotitle}}
-                                         <a href="" class="btn btn-xs btn-success">
-                                            <i class="fa fa-edit" ></i> 编辑
-                                        </a>
-                                        <a href="" class="btn btn-xs btn-danger">
-                                            <i class="fa fa-trash" ></i> 删除
-                                        </a>
-                                    </h2>
-                                    {!! $liveinfo->ifocontent !!}
-                                </div>
-                            </li>
+                            @if ($live->webInfos)
+                                @foreach ($live->webInfos as $liveinfo)
+                                <li>
+                                    <time class="cbp_tmtime" datetime="{{ $liveinfo->ifotime }}"><span>{{ $liveinfo->publishDate }}</span> <span>{{ $liveinfo->publishTime }}</span></time>
+                                    <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                    <div class="cbp_tmlabel">
+                                        <h2>{{$liveinfo->ifotitle}}
+                                            <div class="pull-right">
+                                            <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/'.$liveinfo->ifoid.'/edit' }}" class="btn btn-xs btn-success">
+                                                <i class="fa fa-edit" ></i> 编辑
+                                            </a>
+                                            </div>
+                                        </h2>
+                                        {!! $liveinfo->ifocontent !!}
+                                    </div>
+                                </li>
+                                @endforeach
                             @endif
                         </ul>
                     </div>

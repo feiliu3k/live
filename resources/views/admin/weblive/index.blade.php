@@ -38,11 +38,14 @@
                             <td class="hidden-sm">{{ $live->pnum }}</td>
                             <td class="hidden-md">{{ $live->readnum }}</td>
                             <td>
-                                <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-info">
+                                <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/edit' }}" class="btn btn-xs btn-primary">
                                     <i class="fa fa-edit"></i> 编辑
                                 </a>
                                 <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/liveinfo' }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> 详细
+                                </a>
+                                <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/viewrecord' }}" class="btn btn-xs btn-success">
+                                    <i class="fa fa-edit"></i> 浏览记录
                                 </a>
                             </td>
                         </tr>

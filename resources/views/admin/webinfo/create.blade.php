@@ -72,7 +72,7 @@
     $(function() {
         //datetimepacker;
         $(".form_datetime").datetimepicker({
-            format: "yyyy-mm-dd hh:ii",
+            format: "yyyy-mm-dd hh:ii:ss",
             language: "zh-CN",
             autoclose: true,
             todayBtn: true

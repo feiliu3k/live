@@ -65,7 +65,7 @@ class LiveController extends Controller
         $weblive->save();
 
         return redirect('/admin/weblive')
-                        ->withSuccess("微直播活动 '$weblive->livetitle' 新建成功.");
+                        ->withSuccess('微直播活动 '.$weblive->livetitle.' 新建成功.');
     }
 
 
@@ -114,6 +114,6 @@ class LiveController extends Controller
         $weblive->delete();
 
         return redirect('/admin/weblive')
-                        ->withSuccess("'$weblive->livetitle' .已经被删除.");
+                        ->withSuccess("$weblive->livetitle .'已经被删除.'");
     }
 }

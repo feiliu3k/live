@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+
+use App\Models\WebLive;
+use App\Models\WebInfo;
+use App\Models\ViewRecord;
 
 class ViewRecordController extends Controller
 {
@@ -14,74 +19,22 @@ class ViewRecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($liveid)
     {
-        //
+        $vrs = ViewRecord::where('liveid',$liveid)
+                        ->orderBy('viewtime', 'desc')
+                        ->paginate(config('weblive.posts_per_page'));
+
+        return view('admin.viewrecord.index')->withVrs($vrs);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function delete(Request $request)
     {
-        //
-    }
+        $vr = ViewRecord::findOrFail($request->vrid);
+        $vr->delete();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect("/admin/weblive/$request->liveid/viewrecord")
+                        ->withSuccess($vr->userphone .'已经被删除.');
     }
 }

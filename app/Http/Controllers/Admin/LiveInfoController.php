@@ -28,7 +28,7 @@ class LiveInfoController extends Controller
      */
     public function index($liveid)
     {
-        $weblive = WebLive::with('webInfos', 'viewRecords')->findOrFail($liveid);
+        $weblive = WebLive::with('webInfos')->findOrFail($liveid);
 
         return view('admin.webinfo.index')->withLive($weblive);
     }
@@ -63,8 +63,8 @@ class LiveInfoController extends Controller
 
         $webInfo->save();
 
-        return redirect('/admin/weblive'.'/'.$liveid.'liveinfo')
-                        ->withSuccess("微直播活动 '$webInfo->ifotitle' 新建成功.");
+        return redirect('/admin/weblive'.'/'.$liveid.'/liveinfo')
+                        ->withSuccess('微直播活动 '.$webInfo->ifotitle.' 新建成功.');
     }
 
     /**
@@ -75,8 +75,8 @@ class LiveInfoController extends Controller
      */
     public function edit($liveid,$infoid)
     {
-        $data = webInfo::findOrFail($infoid)->toArray();
-        return view('admin.webinfo.edit', $data);
+        $data = WebInfo::findOrFail($infoid)->toArray();
+        return view('admin.webinfo.edit',$data);
     }
 
     /**
@@ -88,7 +88,17 @@ class LiveInfoController extends Controller
      */
     public function update(Request $request, $liveid,$infoid)
     {
-        //
+        //dd($request);
+        $webInfo = WebInfo::findOrFail($infoid);
+
+        foreach (array_keys($this->fields) as $field) {
+            $webInfo->$field = $request->get($field);
+        }
+        $webInfo->liveid=$liveid;
+        $webInfo->save();
+
+        return redirect("/admin/weblive/$liveid/liveinfo/$infoid/edit")
+                        ->withSuccess("更新成功.");
     }
 
     /**
@@ -99,6 +109,10 @@ class LiveInfoController extends Controller
      */
     public function destroy($liveid,$infoid)
     {
-        //
+        $webInfo = WebInfo::findOrFail($infoid);
+        $webInfo->delete();
+
+        return redirect("/admin/weblive/$liveid/liveinfo")
+                        ->withSuccess($webInfo->ifotitle .'已经被删除.');
     }
 }

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
 @stop
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row page-title-row">
         <div class="col-md-12">
             <h3>微直播详细信息 <small>» 编辑</small></h3>
@@ -22,10 +22,9 @@
                     @include('admin.partials.errors')
                     @include('admin.partials.success')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'. $liveid.'/liveinfo' }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/weblive').'/'. $liveid.'/liveinfo/' .$ifoid}}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="liveid" value="{{ $liveid }}">
 
                         @include('admin.webinfo._form')
 
@@ -64,11 +63,11 @@
             <div class="modal-body">
                 <p class="lead">
                     <i class="fa fa-question-circle fa-lg"></i>
-                    你是否要删除此活动?
+                    你是否要删除此活动详情吗?
                 </p>
             </div>
             <div class="modal-footer">
-                <form method="POST" action="{{ url('/admin/weblive').'/'.$liveid }}">
+                <form method="POST" action="{{ url('/admin/weblive').'/'.$liveid.'/liveinfo/'.$ifoid }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>

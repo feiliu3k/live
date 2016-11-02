@@ -17,7 +17,7 @@ class WebLive extends Model
 
     public function webInfos()
     {
-        return $this->hasMany('App\Models\WebInfo','liveid','liveid');
+        return $this->hasMany('App\Models\WebInfo','liveid','liveid')->orderby('ifotime','desc');
     }
 
     public function viewRecords()
