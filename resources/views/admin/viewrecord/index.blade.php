@@ -44,6 +44,9 @@
                     </tbody>
                 </table>
             </div>
+             <div class="pull-right">
+                {!! $vrs->render() !!}
+            </div>
         </div>
     </div>
     {{-- 确认删除 --}}
