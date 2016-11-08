@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "caouecs/laravel-lang",
-            "version": "3.0.17",
+            "version": "3.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "f22feed58adaa8051918ceb86fa2d991afad63ad"
+                "reference": "7c5d9ba460165b964408114c2d6e8e32258f3873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/f22feed58adaa8051918ceb86fa2d991afad63ad",
-                "reference": "f22feed58adaa8051918ceb86fa2d991afad63ad",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/7c5d9ba460165b964408114c2d6e8e32258f3873",
+                "reference": "7c5d9ba460165b964408114c2d6e8e32258f3873",
                 "shasum": ""
             },
             "require-dev": {
@@ -45,7 +45,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2016-10-10 18:52:34"
+            "time": "2016-10-31 19:34:07"
         },
         {
             "name": "classpreloader/classpreloader",

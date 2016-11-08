@@ -8,8 +8,7 @@
 @section('content')
     <div class="container">
         <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">{{ $live->livetitle }} <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/create' }}" class="btn btn-success btn-xs pull-right" >
+            <div class="panel-heading">{{ $live->livetitle }} <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/create' }}" class="btn btn-success btn-xs pull-right" >
                 <i class="fa fa-plus-circle"></i> 新建
             </a></div>
             <div class="panel-body">
@@ -20,6 +19,35 @@
                         <ul class="cbp_tmtimeline">
                             @if ($live->webInfos)
                                 @foreach ($live->webInfos as $liveinfo)
+                                <li>
+                                    <time class="cbp_tmtime" datetime="{{ $liveinfo->ifotime }}"><span>{{ $liveinfo->publishDate }}</span> <span>{{ $liveinfo->publishTime }}</span></time>
+                                    <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                    <div class="cbp_tmlabel">
+                                        <h2>{{$liveinfo->ifotitle}}
+                                            <div class="pull-right">
+                                            <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/'.$liveinfo->ifoid.'/edit' }}" class="btn btn-xs btn-success">
+                                                <i class="fa fa-edit" ></i> 编辑
+                                            </a>
+                                            </div>
+                                        </h2>
+                                        {!! $liveinfo->ifocontent !!}
+                                    </div>
+                                </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">评论列表</div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="main">
+                        <ul class="cbp_tmtimeline">
+                            @if ($live->comments)
+                                @foreach ($live->comments as $comment)
                                 <li>
                                     <time class="cbp_tmtime" datetime="{{ $liveinfo->ifotime }}"><span>{{ $liveinfo->publishDate }}</span> <span>{{ $liveinfo->publishTime }}</span></time>
                                     <div class="cbp_tmicon cbp_tmicon-phone"></div>
