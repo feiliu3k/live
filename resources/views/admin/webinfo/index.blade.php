@@ -1,4 +1,4 @@
-@extends('admin.layout')
+我@extends('admin.layout')
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
@@ -52,8 +52,10 @@
                             <div class="infos">
                                 <div class="media-heading meta">
                                     <span  class="remove-padding-left author">
-                                        {{$comment->userip}}
+                                        {{$comment->nickname}}
                                     </span>
+                                    <span> • </span>
+                                    <span>{{$comment->mobile}}</span>
                                     <span> • </span>
                                     <abbr class="time" >{{$comment->ctime}}</abbr>
                                     @if (Auth::check())
