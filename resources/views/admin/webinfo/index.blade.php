@@ -80,8 +80,8 @@
                                 </div>
                             </div>
                         </li>
-                    @endif
-                @endforeach
+                    @endforeach
+                @endif
                 </ul>
             </div>
                 {!! $live->comments()->orderby('ctime','desc')->paginate(config('weblive.posts_per_page'))->render() !!}
