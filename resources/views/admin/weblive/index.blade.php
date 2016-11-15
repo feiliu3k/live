@@ -27,6 +27,7 @@
                             <th>发送时间</th>
                             <th class="hidden-md">观看人数</th>
                             <th class="hidden-md">点击次数</th>
+                            <th>操作</th>
                         </tr>
                      </thead>
                     <tbody>
