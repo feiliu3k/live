@@ -76,7 +76,7 @@
                                     @endif
                                 </div>
                                 <div class="media-body markdown-reply content-body">
-                                    <p> {{$comment->comment}}</p>
+                                    <p> {{$comment->ucomment}}</p>
                                 </div>
                             </div>
                         </li>
