@@ -1,4 +1,4 @@
-我@extends('admin.layout')
+@extends('admin.layout')
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
