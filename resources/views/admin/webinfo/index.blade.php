@@ -63,11 +63,11 @@
                                     <abbr class="time" >{{$comment->ctime}}</abbr>
                                     @if (Auth::check())
                                         <span class="operate pull-right">
-                                            <button type="button" class="btn btn-danger btn-xs btn-delete" data-cid="{{ $comment->cid }}" data-tipid="{{ $comment->tipid }}" >
+                                            <button type="button" class="btn btn-danger btn-xs btn-delete" data-cid="{{ $comment->ucid }}" data-tipid="{{ $comment->liveid }}" >
                                                 <i class="fa fa-times-circle"></i>
                                                 删除
                                             </button>
-                                            <button type="button" class="btn btn-success btn-xs btn-verify" data-cid="{{ $comment->cid }}" data-tipid="{{ $comment->tipid }}" >
+                                            <button type="button" class="btn btn-success btn-xs btn-verify" data-cid="{{ $comment->ucid }}" data-tipid="{{ $comment->liveid }}" >
                                                 <i class="fa fa-check-square-o"></i>
                                                 @if ($comment->verifyflag==0)
                                                     通过
@@ -111,7 +111,7 @@
                     $.ajax({
                         type: 'POST',
                         url: '{{ url("admin/comment/destroy") }}',
-                        data: {'cid': cid},
+                        data: {'ucid': ucid},
                         dataType: 'json',
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -133,7 +133,7 @@
                 $.ajax({
                     type: 'POST',
                     url: '{{ url("admin/comment/verify") }}',
-                    data: {'cid': cid},
+                    data: {'ucid': ucid},
                     dataType: 'json',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
