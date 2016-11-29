@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use Response;
 
 
 class CommentController extends Controller
@@ -20,10 +21,10 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function verify($ucid)
+    public function verify(Request $request)
     {
 
-        $comment = Comment::findOrFail($ucid);
+        $comment = Comment::findOrFail($request->ucid);
 
         $comment->verifyflag = (($comment->verifyflag)==0) ? 1 : 0;
 
@@ -45,10 +46,10 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($ucid)
+    public function destroy(Request $request)
     {
 
-        $comment = Comment::findOrFail($ucid);
+        $comment = Comment::findOrFail($request->ucid);
         $comment->delflag=1;
 
         $comment->save();
