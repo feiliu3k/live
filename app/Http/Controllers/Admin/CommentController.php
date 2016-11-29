@@ -22,11 +22,10 @@ class CommentController extends Controller
      */
     public function verify(Request $request)
     {
-        dd($request);
+        dd($request->ucid);
         $comment = Comment::findOrFail($request->ucid);
 
         $comment->verifyflag = (($comment->verifyflag)==0) ? 1 : 0;
-        $tipid=$comment->tipid;
 
         $comment->save();
 
@@ -48,9 +47,8 @@ class CommentController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd($request);
+        dd($request->ucid);
         $comment = Comment::findOrFail($request->ucid);
-        $tipid=$comment->tipid;
         $comment->delflag=1;
 
         $comment->save();
