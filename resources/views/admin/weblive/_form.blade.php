@@ -51,7 +51,7 @@
     <label for="commentflag" class="col-md-3 control-label">
         评论标志
     </label>
-    <div class="col-md-8">
+    <div class="col-md-8 switch switch-large">
         <input  type="checkbox" name="commentflag" id="commentflag" value="{{ $commentflag }}" >
     </div>
 </div>
