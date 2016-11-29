@@ -22,6 +22,7 @@ class LiveController extends Controller
         'livecontent' => '',
         'pnum' => '',
         'readnum' => '',
+        'commentflag'=>0,
     ];
     /**
      * Display a listing of the resource.
@@ -111,7 +112,8 @@ class LiveController extends Controller
     public function destroy($id)
     {
         $weblive = WebLive::findOrFail($id);
-        $weblive->delete();
+        $weblive->delflag=1;
+        $weblive->save();
 
         return redirect('/admin/weblive')
                         ->withSuccess("$weblive->livetitle .'已经被删除.'");

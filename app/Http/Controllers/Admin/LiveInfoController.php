@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Cache;
 
 use Carbon\Carbon;
 
@@ -29,8 +30,8 @@ class LiveInfoController extends Controller
     public function index($liveid)
     {
         $weblive = WebLive::with('webInfos')->findOrFail($liveid);
-
-        return view('admin.webinfo.index')->withLive($weblive);
+        Cache::forever('live', $weblive->toArray());
+        //return view('admin.webinfo.index')->withLive($weblive);
     }
 
     /**
@@ -110,7 +111,8 @@ class LiveInfoController extends Controller
     public function destroy($liveid,$infoid)
     {
         $webInfo = WebInfo::findOrFail($infoid);
-        $webInfo->delete();
+        $webInfo->delflag=1;
+        $webInfo->save();
 
         return redirect("/admin/weblive/$liveid/liveinfo")
                         ->withSuccess($webInfo->ifotitle .'已经被删除.');

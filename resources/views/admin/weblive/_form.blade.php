@@ -47,7 +47,14 @@
         <input type="text" class="form-control" name="readnum" id="readnum" value="{{ $readnum }}">
     </div>
 </div>
-
+<div class="form-group">
+    <label for="commentflag" class="col-md-3 control-label">
+        评论标志
+    </label>
+    <div class="col-md-8">
+        <input  type="checkbox" name="commentflag" id="commentflag" value="{{ $commentflag }}" >
+    </div>
+</div>
 <div class="form-group">
     <label for="livecontent" class="col-md-3 control-label">
         内容简介
