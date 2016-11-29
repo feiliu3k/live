@@ -1,4 +1,7 @@
 @extends('admin.layout')
+@section('meta')
+    <meta name="_token" content="{{ csrf_token() }}"/>
+@stop
 @section('styles')
     <link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}" >
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" >
@@ -96,4 +99,60 @@
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.config.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+    <script>
+            $(function(){
+            $(".btn-delete").click(function(event) {
+                var _self=this;
+                var sure=confirm('你确定要删除吗?');
+                if (sure){
+                    var cid=$(this).attr("data-cid");
+                    var tipid=$(this).attr("data-tipid");
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ url("/comment/destroy") }}',
+                        data: {'cid': cid},
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        },
+                        success: function(data){
+                            $(_self).parents("li").remove();
+                            //window.location.href='{{ url("/news") }}/'+tipid;
+                        },
+                        error: function(xhr, type){
+                            alert('删除评论失败！');
+                        }
+                    });
+                }
+            });
+            $(".btn-verify").click(function(event) {
+                var _self=this;
+                var cid=$(this).attr("data-cid");
+                var tipid=$(this).attr("data-tipid");
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ url("/comment/verify") }}',
+                    data: {'cid': cid},
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                    success: function(data){
+                        //window.location.href='{{ url("/news") }}/'+tipid;
+                       if(data.verifyflag===0){
+                            $(_self).html('<i class="fa fa-check-square-o"></i> 通过 ');
+                       }else{
+                            $(_self).html('<i class="fa fa-check-square-o"></i> 取消 ');
+                       }
+                    },
+                    error: function(xhr, type){
+                        alert('审核修改失败！');
+                    }
+                });
+
+            });
+
+        });
+    </script>
 @stop
