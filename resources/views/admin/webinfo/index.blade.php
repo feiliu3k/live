@@ -110,7 +110,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '{{ url("/comment/destroy") }}',
+                        url: '{{ url("admin/comment/destroy") }}',
                         data: {'cid': cid},
                         dataType: 'json',
                         headers: {
@@ -132,7 +132,7 @@
                 var tipid=$(this).attr("data-tipid");
                 $.ajax({
                     type: 'POST',
-                    url: '{{ url("/comment/verify") }}',
+                    url: '{{ url("admin/comment/verify") }}',
                     data: {'cid': cid},
                     dataType: 'json',
                     headers: {
