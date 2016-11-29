@@ -22,7 +22,7 @@ class CommentController extends Controller
      */
     public function verify(Request $request)
     {
-        dd($request->ucid);
+
         $comment = Comment::findOrFail($request->ucid);
 
         $comment->verifyflag = (($comment->verifyflag)==0) ? 1 : 0;
@@ -47,7 +47,7 @@ class CommentController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd($request->ucid);
+
         $comment = Comment::findOrFail($request->ucid);
         $comment->delflag=1;
 
