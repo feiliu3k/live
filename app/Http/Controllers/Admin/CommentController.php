@@ -20,10 +20,10 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function verify(Request $request)
+    public function verify($ucid)
     {
 
-        $comment = Comment::findOrFail($request->ucid);
+        $comment = Comment::findOrFail($ucid);
 
         $comment->verifyflag = (($comment->verifyflag)==0) ? 1 : 0;
 
@@ -45,10 +45,10 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($ucid)
     {
 
-        $comment = Comment::findOrFail($request->ucid);
+        $comment = Comment::findOrFail($ucid);
         $comment->delflag=1;
 
         $comment->save();
