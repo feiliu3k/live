@@ -63,11 +63,11 @@
                                     <abbr class="time" >{{$comment->ctime}}</abbr>
                                     @if (Auth::check())
                                         <span class="operate pull-right">
-                                            <button type="button" class="btn btn-danger btn-xs btn-delete" data-cid="{{ $comment->ucid }}" data-tipid="{{ $comment->liveid }}" >
+                                            <button type="button" class="btn btn-danger btn-xs btn-delete" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
                                                 <i class="fa fa-times-circle"></i>
                                                 删除
                                             </button>
-                                            <button type="button" class="btn btn-success btn-xs btn-verify" data-cid="{{ $comment->ucid }}" data-tipid="{{ $comment->liveid }}" >
+                                            <button type="button" class="btn btn-success btn-xs btn-verify" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
                                                 <i class="fa fa-check-square-o"></i>
                                                 @if ($comment->verifyflag==0)
                                                     通过
@@ -105,8 +105,8 @@
                 var _self=this;
                 var sure=confirm('你确定要删除吗?');
                 if (sure){
-                    var cid=$(this).attr("data-cid");
-                    var tipid=$(this).attr("data-tipid");
+                    var ucid=$(this).attr("data-ucid");
+                    var liveid=$(this).attr("data-liveid");
 
                     $.ajax({
                         type: 'POST',
@@ -128,8 +128,9 @@
             });
             $(".btn-verify").click(function(event) {
                 var _self=this;
-                var cid=$(this).attr("data-cid");
-                var tipid=$(this).attr("data-tipid");
+                var ucid=$(this).attr("data-ucid");
+                var liveid=$(this).attr("data-liveid");
+
                 $.ajax({
                     type: 'POST',
                     url: '{{ url("admin/comment/verify") }}',
