@@ -47,14 +47,18 @@
         <input type="text" class="form-control" name="readnum" id="readnum" value="{{ $readnum }}">
     </div>
 </div>
+
 <div class="form-group">
-    <label for="commentflag" class="col-md-3 control-label">
-        评论标志
-    </label>
-    <div class="col-md-8 switch switch-large">
-        <input  type="checkbox" name="commentflag" id="commentflag" value="{{ $commentflag }}" >
+    <div class="col-md-8 col-md-offset-3">
+        <div class="checkbox">
+            <label>
+                <input  type="checkbox" id="commentflag"  name="commentflag" value=1 @if ($commentflag==1) checked="checked" @endif >
+                评论标志
+            </label>
+         </div>
     </div>
 </div>
+
 <div class="form-group">
     <label for="livecontent" class="col-md-3 control-label">
         内容简介

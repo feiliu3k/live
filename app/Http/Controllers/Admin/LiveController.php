@@ -62,7 +62,12 @@ class LiveController extends Controller
         foreach (array_keys($this->fields) as $field) {
             $weblive->$field = $request->get($field);
         }
-
+        if($request->commentflag){
+            $weblive->commentflag=$request->commentflag;
+        }else
+        {
+            $weblive->commentflag=0;
+        }
         $weblive->save();
 
         return redirect('/admin/weblive')
@@ -95,6 +100,13 @@ class LiveController extends Controller
 
         foreach (array_keys($this->fields) as $field) {
             $weblive->$field = $request->get($field);
+        }
+
+        if($request->commentflag){
+            $weblive->commentflag=$request->commentflag;
+        }else
+        {
+            $weblive->commentflag=0;
         }
 
         $weblive->save();

@@ -8,7 +8,7 @@
         <title>{{ config('weblive.title') }}管理</title>
 
         <link href="{{ url('/assets/css/admin.css') }}" rel="stylesheet">
-        <link href="{{ url('/assets/css/bootstrap-switch.min.css') }}" rel="stylesheet">
+
         @yield('styles')
 
         <!--[if lt IE 9]>
@@ -38,8 +38,6 @@
         @yield('content')
 
         <script src="{{ url('/assets/js/admin.js') }}"></script>
-        <script src="{{ url('/assets/js/bootstrap-switch.min.js') }}"></script>
-
 
         @yield('scripts')
 
