@@ -30,8 +30,8 @@ class LiveInfoController extends Controller
     public function index($liveid)
     {
         $weblive = WebLive::with('webInfos')->findOrFail($liveid);
-        Cache::forever('live', $weblive->toArray());
-        //return view('admin.webinfo.index')->withLive($weblive);
+        //Cache::forever('live', $weblive->toArray());
+        return view('admin.webinfo.index')->withLive($weblive);
     }
 
     /**
