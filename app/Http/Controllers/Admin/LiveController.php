@@ -124,8 +124,7 @@ class LiveController extends Controller
     public function destroy($id)
     {
         $weblive = WebLive::findOrFail($id);
-        $weblive->delflag=1;
-        $weblive->save();
+        $weblive->delete();
 
         return redirect('/admin/weblive')
                         ->withSuccess("$weblive->livetitle .'已经被删除.'");
