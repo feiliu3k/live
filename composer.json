@@ -8,7 +8,6 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "dflydev/apache-mime-types": "^1.0",
-        "maatwebsite/excel": "~2.1.0",
         "laravelcollective/bus": "^5.2",
         "caouecs/laravel-lang": "~3.0",
         "mews/captcha": "^2.1",

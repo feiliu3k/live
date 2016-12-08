@@ -31,7 +31,7 @@ class LiveController extends Controller
      */
     public function index()
     {
-        $lives = WebLive::all();
+        $lives = WebLive::orderBy('livetime', 'desc')->get();
         return view('admin.weblive.index')->withLives($lives);
     }
 

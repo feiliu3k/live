@@ -22,20 +22,22 @@
                         <ul class="cbp_tmtimeline">
                             @if ($live->webInfos)
                                 @foreach ($live->webInfos as $liveinfo)
-                                <li>
-                                    <time class="cbp_tmtime" datetime="{{ $liveinfo->ifotime }}"><span>{{ $liveinfo->publishDate }}</span> <span>{{ $liveinfo->publishTime }}</span></time>
-                                    <div class="cbp_tmicon cbp_tmicon-phone"></div>
-                                    <div class="cbp_tmlabel">
-                                        <h2>{{$liveinfo->ifotitle}}
-                                            <div class="pull-right">
-                                            <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/'.$liveinfo->ifoid.'/edit' }}" class="btn btn-xs btn-success">
-                                                <i class="fa fa-edit" ></i> 编辑
-                                            </a>
+                                    @if ($liveinfo->delflag==0)
+                                        <li>
+                                            <time class="cbp_tmtime" datetime="{{ $liveinfo->ifotime }}"><span>{{ $liveinfo->publishDate }}</span> <span>{{ $liveinfo->publishTime }}</span></time>
+                                            <div class="cbp_tmicon cbp_tmicon-phone"></div>
+                                            <div class="cbp_tmlabel">
+                                                <h2>{{$liveinfo->ifotitle}}
+                                                    <div class="pull-right">
+                                                    <a href="{{ url('/admin/weblive').'/'. $live->liveid.'/liveinfo/'.$liveinfo->ifoid.'/edit' }}" class="btn btn-xs btn-success">
+                                                        <i class="fa fa-edit" ></i> 编辑
+                                                    </a>
+                                                    </div>
+                                                </h2>
+                                                {!! $liveinfo->ifocontent !!}
                                             </div>
-                                        </h2>
-                                        {!! $liveinfo->ifocontent !!}
-                                    </div>
-                                </li>
+                                        </li>
+                                    @endif
                                 @endforeach
                             @endif
                         </ul>
@@ -51,38 +53,40 @@
                 <ul class="list-group row" >
                  @if ($live->comments)
                     @foreach ($live->comments as $comment)
-                        <li class="list-group-item media" style="margin-top: 0px;">
-                            <div class="infos">
-                                <div class="media-heading meta">
-                                    <span  class="remove-padding-left author">
-                                        {{$comment->nickname}}
-                                    </span>
-                                    <span> • </span>
-                                    <span>{{$comment->mobile}}</span>
-                                    <span> • </span>
-                                    <abbr class="time" >{{$comment->ctime}}</abbr>
-                                    @if (Auth::check())
-                                        <span class="operate pull-right">
-                                            <button type="button" class="btn btn-danger btn-xs btn-delete" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
-                                                <i class="fa fa-times-circle"></i>
-                                                删除
-                                            </button>
-                                            <button type="button" class="btn btn-success btn-xs btn-verify" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
-                                                <i class="fa fa-check-square-o"></i>
-                                                @if ($comment->verifyflag==0)
-                                                    通过
-                                                @else
-                                                    取消
-                                                @endif
-                                            </button>
+                        @if ($comment->delflag==0)
+                            <li class="list-group-item media" style="margin-top: 0px;">
+                                <div class="infos">
+                                    <div class="media-heading meta">
+                                        <span  class="remove-padding-left author">
+                                            {{$comment->nickname}}
                                         </span>
-                                    @endif
+                                        <span> • </span>
+                                        <span>{{$comment->mobile}}</span>
+                                        <span> • </span>
+                                        <abbr class="time" >{{$comment->ctime}}</abbr>
+                                        @if (Auth::check())
+                                            <span class="operate pull-right">
+                                                <button type="button" class="btn btn-danger btn-xs btn-delete" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
+                                                    <i class="fa fa-times-circle"></i>
+                                                    删除
+                                                </button>
+                                                <button type="button" class="btn btn-success btn-xs btn-verify" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
+                                                    <i class="fa fa-check-square-o"></i>
+                                                    @if ($comment->verifyflag==0)
+                                                        通过
+                                                    @else
+                                                        取消
+                                                    @endif
+                                                </button>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="media-body markdown-reply content-body">
+                                        <p> {{$comment->ucomment}}</p>
+                                    </div>
                                 </div>
-                                <div class="media-body markdown-reply content-body">
-                                    <p> {{$comment->ucomment}}</p>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endif
                     @endforeach
                 @endif
                 </ul>
