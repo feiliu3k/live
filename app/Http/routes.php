@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('admin/weblive');
-});
+// Route::get('/', function () {
+//     return redirect('admin/weblive');
+// });
+
+Route::get('','HomeController@index');
 
 Route::post('upload/uploadImgFile', 'HomeController@uploadImgFile');
 
