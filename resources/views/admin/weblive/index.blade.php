@@ -27,7 +27,7 @@
                             <th>发送时间</th>
                             <th class="hidden-md">观看人数</th>
                             <th class="hidden-md">点击次数</th>
-                            <th>操作</th>
+                            <th data-sortable="false">操作</th>
                         </tr>
                      </thead>
                     <tbody>
@@ -61,8 +61,9 @@
 @section('scripts')
     <script>
         $(function() {
-            $("#lives-table").DataTable({
-            });
+			$("#lives-table").DataTable({
+				ordering: false
+			});
         });
     </script>
 @stop
