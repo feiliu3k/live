@@ -49,6 +49,24 @@
 </div>
 
 <div class="form-group">
+    <label for="hlsurlrtmpurl" class="col-md-3 control-label">
+        hls地址
+    </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control" name="hlsurl" id="hlsurl" value="{{ $hlsurl }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="rtmpurl" class="col-md-3 control-label">
+        rtmp地址
+    </label>
+    <div class="col-md-8">
+        <input type="text" class="form-control" name="rtmpurl" id="rtmpurl" value="{{ $rtmpurl }}">
+    </div>
+</div>
+
+<div class="form-group">
     <div class="col-md-8 col-md-offset-3">
         <div class="checkbox">
             <label>

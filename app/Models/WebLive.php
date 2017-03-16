@@ -12,7 +12,7 @@ class WebLive extends Model
    // protected $dates = ['livetime'];
 
     protected $fillable = [
-        'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum', 'commentflag'
+        'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum', 'hlsurl', 'rtmpurl', 'commentflag'
     ];
 
     public function webInfos()

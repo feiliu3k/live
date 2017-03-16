@@ -22,6 +22,8 @@ class LiveController extends Controller
         'livecontent' => '',
         'pnum' => '',
         'readnum' => '',
+        'hlsurl' => '',
+        'rtmpurl' => '',
         'commentflag'=>0,
     ];
     /**
