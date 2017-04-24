@@ -30,6 +30,7 @@ Route::group(['namespace'=>'Admin','middleware'=>'auth'],function(){
 
     Route::post('admin/comment/destroy','CommentController@destroy');
     Route::post('admin/comment/verify', 'CommentController@verify');
+    Route::get('admin/weblive/{liveid}/comments', 'LiveController@comments');
 
 });
 

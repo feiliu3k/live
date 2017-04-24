@@ -104,7 +104,7 @@
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/ueditor.all.min.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ URL::asset('assets/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
     <script>
-            $(function(){
+        $(function(){
             $(".btn-delete").click(function(event) {
                 var _self=this;
                 var sure=confirm('你确定要删除吗?');
@@ -155,9 +155,7 @@
                         alert('审核修改失败！');
                     }
                 });
-
             });
-
         });
     </script>
 @stop

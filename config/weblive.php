@@ -8,5 +8,6 @@ return [
         'webpath' => '/uploads',
     ],
     'thumb_path'=>'../../uploads/weblive/',
-    'imagePath'=>'http://localhost:8080/uploads/weblive/'
+    'imagePath'=>'http://localhost/uploads/weblive/',
+    'comment_image_path'=>'http://localhost/uploads/weblive/',
 ];

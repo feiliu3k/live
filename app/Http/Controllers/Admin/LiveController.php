@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\WebLive;
 use App\Models\WebInfo;
 use App\Models\ViewRecord;
+use App\Models\Comment;
 
 class LiveController extends Controller
 {
@@ -130,5 +131,22 @@ class LiveController extends Controller
 
         return redirect('/admin/weblive')
                         ->withSuccess("$weblive->livetitle .'已经被删除.'");
+    }
+
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function comments($id)
+    {
+       $comments = Comment::where('liveid',$id)                
+                ->where('delflag',0)
+                ->orderBy('ctime', 'desc')
+                ->paginate(config('weblive.posts_per_page'));
+          
+        return view('admin.comments.index',compact('comments'));
     }
 }

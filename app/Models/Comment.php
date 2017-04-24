@@ -15,4 +15,14 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\WebLive','liveid','liveid');
     }
+
+    public function getUpimgAttribute($value)
+    {
+        $imgs=[];
+        if (strlen(trim($value))>0){
+            $imgs=explode(',',substr(trim($value),0,-1));
+        }
+        return $imgs;
+    }
+
 }
