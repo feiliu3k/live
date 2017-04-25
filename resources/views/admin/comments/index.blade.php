@@ -1,4 +1,8 @@
 @extends('admin.layout')
+
+@section('meta')
+    <meta name="_token" content="{{ csrf_token() }}"/>
+@stop
 @section('styles')
 
     <link href="{{ URL::asset('assets/css/jrsx.css') }}" rel="stylesheet">
@@ -23,8 +27,15 @@
                     <ul class="list-group row topic-list">
                         @if (count($comments)>0)
                             @foreach ($comments as $comment)
-                                <li class="list-group-item media 1" style="margin-top: 0px;">                        
+                                <li class="list-group-item media 1" style="margin-top: 0px;">                       
                                     <div class="infos">
+                                                                                <div class="add-margin-bottom">
+                                            <span class="username">昵称：{{ $comment->nickname }}</span>
+                                            <span> • </span>
+                                            <span class="dh">手机号码：{{ $comment->mobile }}</span>
+                                            <span> • </span>
+                                            <span class="postdate">发表时间：{{ $comment->ctime }}</span>
+                                        </div>
                                         <div class="media-heading">
                                             {{ $comment->ucomment }}
                                         </div>
@@ -52,14 +63,8 @@
                                                 @endforeach
                                             @endif
                                         </div>
-                                        <div class="add-margin-bottom">
-                                        <span class="username">昵称：{{ $comment->nickname }}</span>
-                                            <span> • </span>
-                                            <span class="dh">手机号码：{{ $comment->mobile }}</span>
-                                            <span> • </span>
-                                            <span class="postdate">发表时间：{{ $comment->ctime }}</span>
-                                        </div>
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-6 pull-right">
                                             @if (Auth::check())
                                                 <span class="operate pull-right">
                                                     <button type="button" class="btn btn-danger btn-xs btn-delete" data-ucid="{{ $comment->ucid }}" data-liveid="{{ $comment->liveid }}" >
@@ -96,10 +101,61 @@
 <script src="{{ URL::asset('assets/js/lightbox.js') }}"></script>
 <script src="{{ URL::asset('assets/js/videobox.js') }}"></script>
 <script>
-
     $(function() {
         var lightbox = new LightBox();
         var videobox = new VideoBox();
+
+        $(".btn-delete").click(function(event) {
+            var _self=this;
+            var sure=confirm('你确定要删除吗?');
+            if (sure){
+                var ucid=$(this).attr("data-ucid");
+                var liveid=$(this).attr("data-liveid");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ url("admin/comment/destroy") }}',
+                    data: {'ucid': ucid},
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                    success: function(data){
+                        $(_self).parents("li").remove();
+                        //window.location.href='{{ url("/news") }}/'+tipid;
+                    },
+                    error: function(xhr, type){
+                        alert('删除评论失败！');
+                    }
+                });
+            }
+        });
+        $(".btn-verify").click(function(event) {
+            var _self=this;
+            var ucid=$(this).attr("data-ucid");
+            var liveid=$(this).attr("data-liveid");
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ url("admin/comment/verify") }}',
+                data: {'ucid': ucid},
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                success: function(data){
+                    //window.location.href='{{ url("/news") }}/'+tipid;
+                   if(data.verifyflag===0){
+                        $(_self).html('<i class="fa fa-check-square-o"></i> 通过 ');
+                   }else{
+                        $(_self).html('<i class="fa fa-check-square-o"></i> 取消 ');
+                   }
+                },
+                error: function(xhr, type){
+                    alert('审核修改失败！');
+                }
+            });
+        });
     });
 
 </script>
