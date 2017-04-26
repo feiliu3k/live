@@ -9,5 +9,5 @@ return [
     ],
     'thumb_path'=>'../../uploads/weblive/',
     'imagePath'=>'http://localhost/uploads/weblive/',
-    'comment_image_path'=>'http://localhost/uploads/weblive/',
+    'comment_image_path'=>'http://olive.strtv.cn:7337/olivelive/',
 ];
