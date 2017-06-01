@@ -17612,7 +17612,7 @@ UE.plugins['video'] = function (){
                 var vposter = url +'.jpg';
                 if(ext == 'ogv') ext = 'ogg';
                 str = '<video' + (id ? ' id="' + id + '"' : '') + ' class="' + classname + ' video-js" ' + (align ? ' style="float:' + align + '"': '') +
-                    ' controls preload="none" width="' + width + '" height="' + height +'" poster="' + vposter + '" src="' + url + '" data-setup="{}">' +
+                    ' webkit-playsinline="true" x-webkit-airplay="true"  playsinline="true" controls preload="none" style="object-fit:fill" width="100%" height="' + height +'" poster="' + vposter + '" src="' + url + '" data-setup="{}">' +
                     '<source src="' + url + '" type="video/' + ext + '" /></video>';
                 break;
         }
