@@ -12,7 +12,7 @@ class WebLive extends Model
    // protected $dates = ['livetime'];
 
     protected $fillable = [
-        'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum', 'hlsurl', 'rtmpurl', 'commentflag'
+        'livetitle', 'livetime', 'liveimg', 'livecontent', 'pnum', 'readnum', 'hlsurl', 'rtmpurl', 'commentflag', 'refreshcommentflag', 'hlsurl1', 'verifyflag', 'delflag', 'refreshliveflag', 'countdownflag', 'adname', 'adlinkadimg', 'uistyle', 'livelistorder', 'realreadnum', 'showreadflag','proname'
     ];
 
     public function webInfos()
@@ -28,5 +28,10 @@ class WebLive extends Model
     public function viewRecords()
     {
         return $this->hasMany('App\Models\ViewRecord','liveid','liveid');
+    }
+
+    public function visitors()
+    {
+        return $this->hasMany('App\Models\Visitor','liveid','liveid');
     }
 }

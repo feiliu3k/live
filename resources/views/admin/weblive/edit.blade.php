@@ -157,7 +157,12 @@
             $('#filetype').attr('value','image');
         });
 
+        $('.adimg-upload').on('click',function(){
+            $('.upload-mask').show();
+            $('.upload-file').show();
 
+            $('#filetype').attr('value','adimg');
+        });
 
 
         //ajax 上传
@@ -191,8 +196,13 @@
 
                 $('.upload-mask').hide();
                 $('.upload-file').hide();
-                if (response.filetype=='image'){
+
+                 if (response.filetype=='image'){
                     $("#liveimg").val(response.src);
+                }
+
+                if (response.filetype=='adimg'){
+                    $("#adimg").val(response.src);
                 }
 
             }

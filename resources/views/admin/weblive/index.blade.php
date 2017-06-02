@@ -45,7 +45,7 @@
                                 <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/liveinfo' }}" class="btn btn-xs btn-info">
                                     <i class="fa fa-edit"></i> 详细
                                 </a>
-                                <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/viewrecord' }}" class="btn btn-xs btn-success">
+                                <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/visitors' }}" class="btn btn-xs btn-success">
                                     <i class="fa fa-edit"></i> 浏览记录
                                 </a>
                                 <a href="{{ url('/admin/weblive').'/'.$live->liveid.'/comments' }}" class="btn btn-xs btn-primary">

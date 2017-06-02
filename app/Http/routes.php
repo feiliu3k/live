@@ -25,8 +25,8 @@ Route::group(['namespace'=>'Admin','middleware'=>'auth'],function(){
 
     Route::resource('admin/weblive/{liveid}/liveinfo', 'LiveInfoController', ['except' => 'show']);
 
-    Route::get('admin/weblive/{liveid}/viewrecord', 'ViewRecordController@index');
-    Route::post('admin/viewrecord/delete', 'ViewRecordController@delete');
+    Route::get('admin/weblive/{liveid}/visitors', 'VisitorController@index');
+    Route::post('admin/visitor/delete', 'VisitorController@delete');
 
     Route::post('admin/comment/destroy','CommentController@destroy');
     Route::post('admin/comment/verify', 'CommentController@verify');

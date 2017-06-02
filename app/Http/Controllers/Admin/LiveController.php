@@ -10,22 +10,34 @@ use Carbon\Carbon;
 
 use App\Models\WebLive;
 use App\Models\WebInfo;
-use App\Models\ViewRecord;
+use App\Models\Visitor;
 use App\Models\Comment;
 
 class LiveController extends Controller
 {
 
     protected $fields = [
+        'proname' => '',
         'livetitle' => '',
         'livetime' => '',
         'liveimg' => '',
         'livecontent' => '',
         'pnum' => '',
         'readnum' => '',
+        'realreadnum'=>'',
         'hlsurl' => '',
+        'hlsurl1' => '',
         'rtmpurl' => '',
-        'commentflag'=>0,
+        'adname' => '',
+        'adimg' =>'',
+        'adlink' =>'',
+        'verifyflag' => 0,
+        'commentflag' => 0,
+        'refreshcommentflag' => 0,
+        'refreshliveflag' => 0,
+        'showreadflag' => 0,
+        'countdownflag' => 0, 
+        'livelistorder' => 0,
     ];
     /**
      * Display a listing of the resource.
@@ -65,12 +77,56 @@ class LiveController extends Controller
         foreach (array_keys($this->fields) as $field) {
             $weblive->$field = $request->get($field);
         }
+        
         if($request->commentflag){
             $weblive->commentflag=$request->commentflag;
         }else
         {
             $weblive->commentflag=0;
         }
+
+        if($request->verifyflag){
+            $weblive->verifyflag=$request->verifyflag;
+        }else
+        {
+            $weblive->verifyflag=0;
+        }
+
+        if($request->refreshcommentflag){
+            $weblive->refreshcommentflag=$request->refreshcommentflag;
+        }else
+        {
+            $weblive->refreshcommentflag=0;
+        }
+
+        if($request->refreshliveflag){
+            $weblive->refreshliveflag=$request->refreshliveflag;
+        }else
+        {
+            $weblive->refreshliveflag=0;
+        }
+
+        if($request->showreadflag){
+            $weblive->showreadflag=$request->showreadflag;
+        }else
+        {
+            $weblive->showreadflag=0;
+        }
+
+        if($request->countdownflag){
+            $weblive->countdownflag=$request->countdownflag;
+        }else
+        {
+            $weblive->countdownflag=0;
+        }
+
+        if($request->livelistorder){
+            $weblive->livelistorder=$request->livelistorder;
+        }else
+        {
+            $weblive->livelistorder=0;
+        }
+
         $weblive->save();
 
         return redirect('/admin/weblive')
@@ -106,10 +162,52 @@ class LiveController extends Controller
         }
 
         if($request->commentflag){
-            $weblive->commentflag=$request->commentflag;
+           $weblive->commentflag=$request->commentflag;
         }else
         {
             $weblive->commentflag=0;
+        } 
+
+        if($request->verifyflag){
+            $weblive->verifyflag=$request->verifyflag;
+        }else
+        {
+            $weblive->verifyflag=0;
+        }
+
+        if($request->refreshcommentflag){
+            $weblive->refreshcommentflag=$request->refreshcommentflag;
+        }else
+        {
+            $weblive->refreshcommentflag=0;
+        }
+
+        if($request->refreshliveflag){
+            $weblive->refreshliveflag=$request->refreshliveflag;
+        }else
+        {
+            $weblive->refreshliveflag=0;
+        }
+
+        if($request->showreadflag){
+            $weblive->showreadflag=$request->showreadflag;
+        }else
+        {
+            $weblive->showreadflag=0;
+        }
+
+        if($request->countdownflag){
+            $weblive->countdownflag=$request->countdownflag;
+        }else
+        {
+            $weblive->countdownflag=0;
+        }
+
+        if($request->livelistorder){
+            $weblive->livelistorder=$request->livelistorder;
+        }else
+        {
+            $weblive->livelistorder=0;
         }
 
         $weblive->save();

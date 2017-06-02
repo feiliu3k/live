@@ -94,6 +94,16 @@ class HomeController extends Controller
                                             $constraint->aspectRatio();
                                         });
             $img->save(public_path($destinationPath.$fileName));
+        }else if($filetype=='adimg'){
+            $destinationPath = config('weblive.thumb_path');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = str_random(16).'.'.$extension;
+            $file->move($destinationPath, $fileName);
+            $img = Image::make(public_path($destinationPath.$fileName))
+                        ->resize(320, null, function ($constraint) {
+                                            $constraint->aspectRatio();
+                                        });
+
         }
         return Response::json(
             [
